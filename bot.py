@@ -1,4 +1,5 @@
 import logging
+import ephem
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import settings
 
@@ -14,6 +15,13 @@ def greet_user(update, context):
     print ('Вызван /start')
     update.message.reply_text('Здравствуй, пользователь')
 
+
+def planet_name(update, context):
+    if update.message == 'eqw':
+        print ('asddasd')
+
+    update.message.reply_text('vxzc')
+
 def talk_to_me(update, context):
     text = update.message.text
     print(text)
@@ -25,6 +33,7 @@ def main():
     
     dp = mybot.dispatcher
     dp.add_handler(CommandHandler('start', greet_user))
+    dp.add_handler(CommandHandler('planet', planet_name))
     dp.add_handler(MessageHandler(Filters.text, talk_to_me))
 
     logging.info('Bot started')
